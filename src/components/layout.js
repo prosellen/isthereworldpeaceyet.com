@@ -8,9 +8,36 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import styled, { createGlobalStyle } from "styled-components"
 
-import Header from "./header"
-import "./layout.css"
+import Footer from "./footer"
+
+const GlobalStyle = createGlobalStyle`
+  body, html { max-height: 100vh; overflow: hidden;margin: 0;}
+  body {
+    background: #c42929;
+    background: linear-gradient(to bottom, #c42929 0%,#890000 100%);
+    font-family: 'Open Sans', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+  }
+`
+
+const Site = styled.div`
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+`
+
+const Main = styled.main`
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const StickyFooter = styled(Footer)`
+  flex-shrink: 0;
+`
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -24,23 +51,11 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
-    </>
+    <Site>
+      <GlobalStyle />
+      <Main>{children}</Main>
+      <StickyFooter />
+    </Site>
   )
 }
 
