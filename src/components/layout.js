@@ -21,9 +21,13 @@ const GlobalStyle = createGlobalStyle`
     color: #fff;
   }
   h1 {
-    font-size: 9rem;
+    font-size: 30vw;
     margin: .5rem 0;
     text-align: center;
+
+     @media (min-width: 768px) {
+      font-size: 9rem;
+    }
   }
   p {
     font-size: .8rem;
