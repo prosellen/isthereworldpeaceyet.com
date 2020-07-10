@@ -20,6 +20,15 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Open Sans', Tahoma, Geneva, Verdana, sans-serif;
     color: #fff;
   }
+  h1 {
+    font-size: 9rem;
+    margin: .5rem 0;
+    text-align: center;
+  }
+  p {
+    font-size: .8rem;
+    text-align: center;
+  }
 `
 
 const Site = styled.div`
@@ -40,20 +49,22 @@ const StickyFooter = styled(Footer)`
 `
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+  // const data = useStaticQuery(graphql`
+  //   query SiteTitleQuery {
+  //     site {
+  //       siteMetadata {
+  //         title
+  //       }
+  //     }
+  //   }
+  // `)
 
   return (
     <Site>
       <GlobalStyle />
-      <Main>{children}</Main>
+      <Main>
+        <div>{children}</div>
+      </Main>
       <StickyFooter />
     </Site>
   )

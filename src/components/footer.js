@@ -9,8 +9,9 @@ const FooterBar = styled.footer`
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: flex-start;
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   padding: 0.25rem;
+  opacity: 0.5;
 `
 
 const MadeWith = styled.div`
